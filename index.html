@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta tags -->
+  <head>
+    <title>D3 Covid Narrative</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+
+      body {
+        font-family:
+        	-apple-system, Helvetica, Arial, sans-serif;
+    	}
+
+    </style>
+  </head>
+  <body>
+
+  	<div id='content-wrapper'>
+	<!--
+  		<h4 class='chart-title'>Top 10 Countries by Total Confirmed Cases</h4>
+  		<div id='cases-wrapper' class='graph-wrapper'></div>
+  		
+  		<h4 class='chart-title'>Top 10 Countries by Total Confirmed Deaths</h4>
+  		<div class='controls'>
+  			<span>Choose a month:</span>
+  			<select id='dropdown-month'></select>
+  		</div>
+  		<div id='deaths-wrapper' class='graph-wrapper'></div>
+  	-->
+		<h4 class="chart-title">Tests and Cases for Top 5 Countries by Cases</h4>
+  		<div id='tests-wrapper' class='graph-wrapper'></div>
+  	</div>
+  	
+  	<script src="scripts/imports/d3.min.js"></script>
+
+  	<script src="scripts/data/top10_cases.js"></script>
+  	<script src="scripts/data/top10_deaths.js"></script>
+  	<script src="scripts/data/top10_tests.js"></script>
+    <script src="scripts/index.js"></script>
+    
+    <!-- <script src="scripts/charts/1_top10.js"></script>  -->
+    <!-- <script src="scripts/charts/2_deaths.js"></script> -->
+    <script src="scripts/charts/3_tests.js"></script>
+
+  </body>
+</html>
