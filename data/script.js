@@ -51,7 +51,7 @@ const writeSeries = (params) => {
 
 const topCases = getSeriesByTop({
 	topN : 10,
-	dataset : cases,
+	dataset : tests,
 	cat : 'total_cases',
 	date : '2020-03-01'
 })

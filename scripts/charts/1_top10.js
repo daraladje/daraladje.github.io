@@ -1,4 +1,19 @@
-(() => {
+function scene1(title) {
+	
+/***********************************************************************/
+//Dom
+/***********************************************************************/
+const cont = d3.select('#content-wrapper')
+	.append('div')
+	.attr('class', 'chart-wrapper')
+
+d3.select('.chart-title')
+	.html(title)
+
+	const controls = d3.select('.chart-controls')
+	controls.node().innerHTML = ''
+
+
 /***********************************************************************/
 //Data
 /***********************************************************************/
@@ -8,7 +23,7 @@ const paddedCasesMax = totalCasesMax * 1.2
 /***********************************************************************/
 //Plot Area
 /***********************************************************************/
-const cont = d3.select('#cases-wrapper')
+
 
 const height = 600
 const width = 600
@@ -101,8 +116,7 @@ cases.forEach( ({ data, cc, name }, i) => {
 	const path = g.append('path')
 	    .datum(data)
 	    .attr('fill', 'none')
-	    .attr('stroke', colors[i])
-	    .attr('opacity', '1.0')
+	    .attr('stroke', colorDict[cc])
 	    .attr('stroke-linejoin', 'round')
 	    .attr('stroke-linecap', 'round')
 	    .attr('stroke-width', 2)
@@ -127,7 +141,7 @@ cases.forEach( ({ data, cc, name }, i) => {
 		    const y = yScale(+total_cases || 0)
 
 			const label = gLabels.append('text')
-				.attr('fill', colors[i])
+				.attr('fill', colorDict[cc])
 				.attr('x', x)
 				.attr('y', y)
 				.attr('dx', 15)
@@ -179,8 +193,6 @@ cases.forEach( ({ data, cc, name }, i) => {
 				const lx = +label.attr('x').replace('px', '') + +label.attr('dx').replace('px', '') - 1
 				const ly = +label.attr('y').replace('px', '') + +label.attr('dy').replace('px', '')
 
-
-
 				gLabels.append('path')
 					.attr('d', `M ${x + 5} ${y} ${lx} ${ly}`)
 					.attr('stroke', 'darkgrey')
@@ -198,6 +210,7 @@ cases.forEach( ({ data, cc, name }, i) => {
 /***********************************************************************/
 const gGuides = g.append('g')
 	.attr('class', 'g-guides')
+
 const guideRect = gGuides.append('path')
 	.attr('stroke-width', 2)
 	.attr('d', plotAreaHeight)
@@ -219,10 +232,8 @@ const overlay = g.append('rect')
 	.attr('fill', 'white')
 	.attr('fill-opacity', 0)
 	.on('mouseover', function() {
-
 		guideRect.attr('opacity', 0)
 		tooltip.style("display", null)
-
 		gGuides.selectAll('.guide-circle').remove()
 	})
 	.on("mouseout mouseleave", function() {
@@ -234,7 +245,7 @@ const overlay = g.append('rect')
 	})
 	.on("touchmove mousemove", mousemove)	
  
- const bisectDate = d3.bisector(d => new Date(d.date)).left
+const bisectDate = d3.bisector(d => new Date(d.date)).left
 
 function mousemove() {
 	
@@ -297,4 +308,4 @@ function mousemove() {
 	tooltip.node().appendChild(dateTitle.node())
 	tooltip.node().appendChild(table.node())
 }
-})()
+}

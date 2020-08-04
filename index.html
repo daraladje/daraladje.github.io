@@ -2,45 +2,57 @@
 <html>
   <!-- meta tags -->
   <head>
-    <title>D3 Covid Narrative</title>
-    <link rel="stylesheet" href="index.css">
+    <title>COVID - 19: The Impact of Testing</title>
+    <link rel="stylesheet" href="index.css" />
     <style>
-
       body {
-        font-family:
-        	-apple-system, Helvetica, Arial, sans-serif;
-    	}
-
+        font-family: -apple-system, Helvetica, Arial, sans-serif;
+      }
     </style>
   </head>
+
   <body>
+    <header>COVID - 19: The Impact of Testing</header>
+    <div id="content-wrapper">
+      <section class="sidebar">
+        <div class="slideshow-controls">
+          <button class="controls-button" id="prev-button">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+            </svg>
+            Prev
+          </button>
+          <button class="controls-button" id="next-button">
+            Next
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M12 	4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+            </svg>
+          </button>
+        </div>
+        <h4 class="chart-title"></h4>
+        <div class="chart-controls"></div>
+        <p class="chart-copy"></p>
+      </section>
+      <section class="charts"></section>
+    </div>
 
-  	<div id='content-wrapper'>
-	<!--
-  		<h4 class='chart-title'>Top 10 Countries by Total Confirmed Cases</h4>
-  		<div id='cases-wrapper' class='graph-wrapper'></div>
-  		
-  		<h4 class='chart-title'>Top 10 Countries by Total Confirmed Deaths</h4>
-  		<div class='controls'>
-  			<span>Choose a month:</span>
-  			<select id='dropdown-month'></select>
-  		</div>
-  		<div id='deaths-wrapper' class='graph-wrapper'></div>
-  	-->
-		<h4 class="chart-title">Tests and Cases for Top 5 Countries by Cases</h4>
-  		<div id='tests-wrapper' class='graph-wrapper'></div>
-  	</div>
-  	
-  	<script src="scripts/imports/d3.min.js"></script>
+    <!-- imports -->
+    <script src="scripts/imports/d3.min.js"></script>
+    <script src="scripts/constants.js"></script>
 
-  	<script src="scripts/data/top10_cases.js"></script>
-  	<script src="scripts/data/top10_deaths.js"></script>
-  	<script src="scripts/data/top10_tests.js"></script>
+    <!-- data -->
+    <script src="scripts/data/top10_cases.js"></script>
+    <script src="scripts/data/top10_deaths.js"></script>
+    <script src="scripts/data/top10_tests.js"></script>
+
+    <!-- scenes -->
+    <script src="scripts/charts/1_top10.js"></script>
+    <script src="scripts/charts/2_deaths.js"></script>
+    <script src="scripts/charts/3_test_cases.js"></script>
+
+    <!-- util -->
     <script src="scripts/index.js"></script>
-    
-    <!-- <script src="scripts/charts/1_top10.js"></script>  -->
-    <!-- <script src="scripts/charts/2_deaths.js"></script> -->
-    <script src="scripts/charts/3_tests.js"></script>
-
   </body>
 </html>

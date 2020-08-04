@@ -2,16 +2,28 @@ body {
 	background-color: #eceff1;
 }
 
-/*body * {
+/*
+body * {
 	outline: solid 1px red;
 }
 */
 
+
 #content-wrapper {
-    width: 100%;
+ 	/*margin-left: auto;
+ 	margin-right: auto;
+ 	*/
+ 	margin-left: 4rem;
+ 	margin-right: 4rem;
+ 	width: 100%;
+ 	margin-top: 6rem;
 	display: flex;
-	flex-direction: column;
-	align-items: center;
+	flex-wrap: wrap;
+}
+
+.sidebar {
+  flex-basis: 20rem;
+  flex-grow: 0;
 }
 
 .axis line {
@@ -45,7 +57,7 @@ body {
 	margin-right: 1rem;
 }
 
-.graph-wrapper {
+.scene-wrapper {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -53,7 +65,7 @@ body {
 }
 
 .chart-title {
-	font-size: 2rem;
+	font-size: 1.8rem;
 	font-weight: 200;
 }
 
@@ -89,4 +101,76 @@ body {
 
 .btn {
   text-transform: none;
+}
+
+#tests-wrapper {
+	display: flex;
+}
+
+.chart-header {
+	display: flex;
+	justify-content: space-between;
+}
+
+
+.slideshow-controls {
+	display: flex;
+}
+
+.controls-button {
+	padding-top: 0.2rem;
+	padding-bottom: 0.2rem;
+	padding-left: 0.6rem;
+	padding-right: 0.6rem;
+	border: solid 1px #333333;
+	background: white;
+	margin: 0.4rem;
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+.controls-button:hover {
+	transition: 0.4s;
+	background: #b3e5fc;
+	cursor: pointer;
+}
+
+.nav-items {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.scene-wrapper {
+	display: none;
+}
+
+.disabled {
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+.sparklines-group-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	flex: 1 0 48%;
+  	margin: 5px;
+}
+
+header {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 1.4rem;
+	background: #4a148c;
+	color: white;
+	font-weight: 300;
+	font-size: 1.4rem;
+	padding: 1rem;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }

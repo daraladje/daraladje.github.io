@@ -1,4 +1,22 @@
-(() => {
+function scene2(title) {
+/***********************************************************************/
+//DOM
+/***********************************************************************/
+const cont = d3.select('#content-wrapper').append('div').attr('class', 'chart-wrapper')
+
+d3.select('.chart-title')
+	.html(title)
+
+//const controls = cont.append('div').attr('class', 'controls')
+
+
+const controls = d3.select('.chart-controls')
+
+controls.node().innerHTML = ''
+controls.append('span').html('Choose a month:  ')
+controls.append('select').attr('id', 'dropdown-month')
+
+
 
 /***********************************************************************/
 //Data
@@ -10,8 +28,6 @@ let currData = deaths
 /***********************************************************************/
 //Plot Area
 /***********************************************************************/
-const cont = d3.select('#deaths-wrapper')
-
 const height = 600
 const width = 600
 const margin = {
@@ -29,7 +45,6 @@ const plotAreaHeight = height - verticalMargin
 
 const svg = cont
 	.append('svg')
-	//.attr('class', 'z-depth-5')
 	.attr('width', width + horizontalMargin)
     .attr('height', height + verticalMargin)
 
@@ -77,8 +92,8 @@ let yAxis = d3.axisLeft(yScale)
 xAxisG.call(xAxis)
 yAxisG.call(yAxis)
 
-d3.select('#deaths-wrapper > #yAxis > .tick:first-of-type > line').remove()
-d3.select('#deaths-wrapper > #yAxis > .tick:last-of-type > line').remove()
+d3.select('#yAxis > .tick:first-of-type > line').remove()
+d3.select('#yAxis > .tick:last-of-type > line').remove()
 
 /***********************************************************************/
 // Plotting
@@ -167,14 +182,9 @@ const plot = dataset => {
 			.html(yearMo)
 		})
 
-	//Cleans up Y Axis ticks
-	const yAxisDom = d3.select('#yAxis > .domain')
-	const firstBarTopY = d3.select(`#rect_${deaths[0].cc}`).attr('x') * 13
-	yAxisDom.attr('d', yAxisDom.attr('d').replace(/,(.*)V/g, `,13V`))
-
 	//Events
 	dd.on('change', function(d) {
-
+		
 		const { target } = d3.event
 		const selectedMonth = parseDate(target.value).getMonth()
 
@@ -190,7 +200,7 @@ const plot = dataset => {
 			if (!a.data.length || !b.data.length) {
 				return 1
 			}
-			
+
 			return (
 				a.data[a.data.length - 1].total_deaths >
 				b.data[b.data.length - 1].total_deaths ? 1 : -1
@@ -205,9 +215,9 @@ const plot = dataset => {
 
 		yAxisG.transition()
 			.duration(600)
-			.call(yAxis);
-		//yAxisG.call(yAxis)
-			
-			plot(nextData)
-		})
-})()
+			.call(yAxis)
+		
+		plot(nextData)
+
+	})
+}
